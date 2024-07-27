@@ -1,0 +1,220 @@
+function love.load()
+    
+    love.graphics.setFont(love.graphics.newFont(20))
+    button = { x = 100, y = 100, width = 200, height = 50, text = "Click me!" }
+end
+
+function love.draw()
+    
+    love.graphics.setColor(0.2, 0.5, 0.8)
+    love.graphics.rectangle("fill", button.x, button.y, button.width, button.height)
+    
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.printf(button.text, button.x, button.y + (button.height / 2) - 10, button.width, "center")
+end
+
+function love.mousepressed(x, y, buttonType, istouch, presses)
+    if buttonType == 1 then
+        if x > button.x and x < (button.x + button.width) and
+           y > button.y and y < (button.y + button.height) then
+            print("Button clicked!")
+        end
+    end
+end
+
+
+function killSingle(id)
+    local element = document:getElementById(id)
+    if element ~= nil then
+      element:remove()
+    end
+  end
+  
+function killSingle(id)
+  local element = document:getElementById(id)
+  if element ~= nil then
+    element:remove()
+  end
+end
+
+
+function killAll(className)
+  local elements = document:getElementsByClassName(className)
+  for i = elements.length - 1, 0, -1 do
+    elements[i]:remove()
+  end
+end
+
+function canWalkOnWater(character)
+
+    if character.ability == "WaterWalking" or character.equipment == "WaterWalkingBoots" then
+        return true
+      else
+        return false
+      end
+    end
+
+    local player = {
+        ability = "WaterWalking",
+        equipment = "WaterWalkingBoots"
+      }
+      
+      if canWalkOnWater(player) then
+        print("The character can walk on water!")
+      else
+        print("The character cannot walk on water.")
+      end
+
+
+    local whitelist = {
+        "John",
+        "Jane",
+        "Mike",
+        "Sarah"
+      }
+
+      function isWhitelisted(person)
+        for _, name in ipairs(whitelist) do
+          if name == person then
+            return true
+          end
+        end
+        return false
+      end
+
+
+      local person1 = "John"
+local person2 = "Alice"
+
+if isWhitelisted(person1) then
+  print(person1 .. " is whitelisted!")
+else
+  print(person1 .. " is not whitelisted.")
+end
+
+if isWhitelisted(person2) then
+  print(person2 .. " is whitelisted!")
+else
+  print(person2 .. " is not whitelisted.")
+end
+
+
+local isLocked = false
+
+
+function lockClient()
+    isLocked = true
+    print("Client is locked.")
+end
+
+
+function unlockClient()
+    isLocked = false
+    print("Client is unlocked.")
+end
+
+
+function performAction(action)
+    if isLocked then
+        print("Client is locked. Cannot perform action.")
+    else
+        print("Performing action: " .. action)
+        
+    end
+end
+
+
+performAction("Send request") 
+
+lockClient()
+
+performAction("Send request") 
+
+unlockClient()
+
+performAction("Send request") 
+
+function autoPunch()
+    while true do
+        
+        print("Punching...")
+      
+        local delay = 1
+        
+        os.execute("sleep " .. delay)
+    end
+end
+
+
+function fastPunch()
+  
+    local numPunches = 10
+    
+    local delay = 0.5
+
+    for i = 1, numPunches do
+       
+        print("Punching...")
+        
+        os.execute("sleep " .. delay)
+    end
+end
+
+
+autoPunch() 
+
+fastPunch()
+
+
+function calculateStats(data)
+    local sum = 0
+    local count = 0
+    local min = math.huge
+    local max = -math.huge
+
+    
+    for _, value in ipairs(data) do
+        sum = sum + value
+        count = count + 1
+        if value < min then
+            min = value
+        end
+        if value > max then
+            max = value
+        end
+    end
+
+   
+    local average = sum / count
+
+    
+    print("Sum: " .. sum)
+    print("Count: " .. count)
+    print("Minimum: " .. min)
+    print("Maximum: " .. max)
+    print("Average: " .. average)
+end
+
+
+local data = {10, 20, 30, 40, 50}
+calculateStats(data)
+
+
+function removeAndRecoverPunch(text)
+    
+    if string.find(text, "punch") then
+       
+        local modifiedText = string.gsub(text, "punch", "XXXXX")
+        print("Modified text (punch removed): " .. modifiedText)
+
+   
+        local recoveredText = string.gsub(modifiedText, "XXXXX", "punch")
+        print("Recovered text (punch recovered): " .. recoveredText)
+    else
+        print("The word 'punch' does not exist in the text.")
+    end
+end
+
+
+local text = "I like to punch bags."
+removeAndRecoverPunch(text)
